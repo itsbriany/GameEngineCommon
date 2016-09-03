@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package GameEngine.common;
+package GameEngine.Common;
 
 message ClientIdentity {
     string identity = 1;
