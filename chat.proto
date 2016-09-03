@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package GameEngine.common;
+
+message ClientIdentity {
+    string identity = 1;
+}
+
+message SetDestination {
+    ClientIdentity clientIdentity = 1;
+}
