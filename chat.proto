@@ -3,9 +3,25 @@ syntax = "proto3";
 package GameEngine.Common;
 
 message ClientIdentity {
+    // A way to identify someone on the network
     string identity = 1;
+
+    // Chat clients may belong to a group
+    string group = 2;
 }
 
 message SetDestination {
     ClientIdentity clientIdentity = 1;
 }
+
+message ChatMessage {
+    // Where this message is coming from
+    ClientIdentity source = 1;
+
+    // Who to send the message to
+    ClientIdentity destination = 2;
+
+    // Payload sent to destination
+    string text = 3;
+}
+
