@@ -2,26 +2,28 @@ syntax = "proto3";
 
 package GameEngine.Common;
 
-message ClientIdentity {
-    // A way to identify someone on the network
-    string identity = 1;
-
-    // Chat clients may belong to a group
-    string group = 2;
-}
-
-message SetDestination {
-    ClientIdentity clientIdentity = 1;
+// Identifies an entity on the system
+message Identity {
+    string name = 1;
+    message Group {
+        string name = 1;
+    }
 }
 
 message ChatMessage {
-    // Where this message is coming from
-    ClientIdentity source = 1;
+    Identity source = 1;
 
     // Who to send the message to
-    ClientIdentity destination = 2;
+    Identity destination = 2;
 
     // Payload sent to destination
     string text = 3;
+}
+
+// Message first sent to the chat service such that the system
+// can identify the client. A client must send this message
+// before sending any other messages to the system.
+message Connect {
+    Identity identity = 1;
 }
 
